@@ -1,0 +1,23 @@
+<div *ngIf="order" class="details">
+
+  <h2>Order {{ order.orderNumber }}</h2>
+
+  <p>Status: {{ order.status }}</p>
+  <p>Address: {{ order.deliveryAddress }}</p>
+
+  <h3>Items</h3>
+
+  <div *ngFor="let item of order.items">
+
+    <p>{{ item.productName }}</p>
+    <p>{{ item.quantity }} × ₹{{ item.unitPrice }}</p>
+
+  </div>
+
+  <hr>
+
+  <p>Subtotal: ₹{{ order.subTotal }}</p>
+  <p>Discount: ₹{{ order.discountAmount }}</p>
+  <h3>Total: ₹{{ order.totalAmount }}</h3>
+
+</div>

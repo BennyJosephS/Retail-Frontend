@@ -1,0 +1,74 @@
+<div class="admin">
+
+  <h1>🛠 Admin Dashboard</h1>
+
+  <!-- ADD PRODUCT -->
+  <div class="form">
+
+    <h2>Add Product</h2>
+
+    <input placeholder="Name" [(ngModel)]="newProduct.name" />
+    <input placeholder="Price" type="number" [(ngModel)]="newProduct.price" />
+    <input placeholder="Category ID" type="number" [(ngModel)]="newProduct.categoryId" />
+    <input placeholder="Stock" type="number" [(ngModel)]="newProduct.initialStock" />
+    <input placeholder="Image URL" [(ngModel)]="newProduct.imageUrl" />
+
+    <button (click)="addProduct()">Add Product</button>
+
+  </div>
+
+  <!-- PRODUCT LIST -->
+  <h2>Products</h2>
+
+  <table>
+
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr *ngFor="let p of products">
+
+        <td>
+          <img [src]="p.imageUrl || 'https://via.placeholder.com/80'" />
+        </td>
+
+        <td>{{ p.name }}</td>
+
+        <td>₹ {{ p.price }}</td>
+
+        <td>{{ p.stockQuantity }}</td>
+
+        <td>
+          <span [ngClass]="{ active: p.isAvailable, inactive: !p.isAvailable }">
+            {{ p.isAvailable ? 'Available' : 'Hidden' }}
+          </span>
+        </td>
+
+        <td>
+
+          <button (click)="toggleAvailability(p)">
+            Toggle
+          </button>
+
+          <button class="delete" (click)="deleteProduct(p.productId)">
+            Delete
+          </button>
+
+        </td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</div>

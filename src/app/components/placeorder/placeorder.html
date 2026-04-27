@@ -1,0 +1,21 @@
+<div class="order-form">
+
+  <h2>🧾 Checkout</h2>
+
+  <textarea 
+    placeholder="Delivery Address"
+    [(ngModel)]="order.deliveryAddress">
+  </textarea>
+
+  <input 
+    placeholder="Coupon Code (optional)"
+    [(ngModel)]="order.couponCode" />
+
+  <textarea 
+    placeholder="Notes (optional)"
+    [(ngModel)]="order.notes">
+  </textarea>
+
+  <button (click)="placeOrder()">Place Order</button>
+
+</div>
