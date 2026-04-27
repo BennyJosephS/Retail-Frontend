@@ -8,3 +8,14 @@ export interface Product {
   stockQuantity: number;
   isAvailable: boolean;
 }
+
+export interface CreateProduct {
+  categoryId: number;
+  brandId?: number;
+  name: string;
+  description?: string;
+  price: number;
+  packagingInfo?: string;
+  initialStock: number;
+  imageUrl?: string;
+}
