@@ -1,0 +1,82 @@
+<div class="navbar">
+  <h2>🛒 My Cart</h2>
+
+  <div class="links">
+    <a routerLink="/">Menu</a>
+    <a routerLink="/checkout">Checkout</a>
+  </div>
+</div>
+
+<div class="container">
+
+  <div *ngIf="loading" class="loading">
+    Loading cart...
+  </div>
+
+  <div *ngIf="!loading && items.length === 0" class="empty">
+    <h2>Your cart is empty 😔</h2>
+    <a routerLink="/">
+      <button>Browse Menu</button>
+    </a>
+  </div>
+
+  <div *ngIf="items.length > 0">
+
+    <div class="cart-card" *ngFor="let item of items">
+
+      <img [src]="item.imageUrl">
+
+      <div class="details">
+        <h3>{{item.productName}}</h3>
+        <p>₹{{item.unitPrice}}</p>
+
+        <div class="qty-box">
+
+          <button
+            class="qty-btn"
+            (click)="decrease(item)">
+            -
+          </button>
+
+          <span>{{item.quantity}}</span>
+
+          <button
+            class="qty-btn"
+            (click)="increase(item)">
+            +
+          </button>
+
+        </div>
+      </div>
+
+      <div class="side">
+
+        <h4>₹{{item.lineTotal}}</h4>
+
+        <button
+          class="remove-btn"
+          (click)="remove(item.cartItemId)">
+          Remove
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="summary">
+
+      <h3>Subtotal: ₹{{cart.subTotal}}</h3>
+      <h3>Discount: ₹{{cart.discountAmount}}</h3>
+      <h2>Total: ₹{{cart.total}}</h2>
+
+      <a routerLink="/checkout">
+        <button class="checkout-btn">
+          Proceed to Checkout
+        </button>
+      </a>
+
+    </div>
+
+  </div>
+
+</div>

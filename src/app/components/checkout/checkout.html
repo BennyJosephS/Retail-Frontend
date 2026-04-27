@@ -1,0 +1,78 @@
+<div class="navbar">
+  <h2>💳 Checkout</h2>
+
+  <div class="links">
+    <a routerLink="/">Menu</a>
+    <a routerLink="/cart">Cart</a>
+  </div>
+</div>
+
+<div class="container">
+
+  <div *ngIf="loading" class="loading">
+    Loading checkout...
+  </div>
+
+  <div *ngIf="!loading" class="checkout-grid">
+
+    <!-- LEFT -->
+    <div class="form-box">
+
+      <h2>Delivery Details</h2>
+
+      <label>Delivery Address</label>
+      <textarea
+        rows="4"
+        [(ngModel)]="orderData.deliveryAddress"
+        placeholder="Enter full address">
+      </textarea>
+
+      <label>Coupon Code</label>
+      <input
+        type="text"
+        [(ngModel)]="orderData.couponCode"
+        placeholder="Optional">
+
+      <label>Notes</label>
+      <textarea
+        rows="3"
+        [(ngModel)]="orderData.notes"
+        placeholder="Special instructions">
+      </textarea>
+
+      <button
+        class="place-btn"
+        (click)="placeOrder()"
+        [disabled]="placing">
+
+        {{ placing ? 'Placing Order...' : 'Place Order' }}
+
+      </button>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="summary-box">
+
+      <h2>Order Summary</h2>
+
+      <div class="row">
+        <span>Subtotal</span>
+        <span>₹{{cart.subTotal}}</span>
+      </div>
+
+      <div class="row">
+        <span>Discount</span>
+        <span>₹{{cart.discountAmount}}</span>
+      </div>
+
+      <div class="row total">
+        <span>Total</span>
+        <span>₹{{cart.total}}</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
