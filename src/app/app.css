@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fff8f0; /* soft cream */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #d84315; /* tomato red */
+  color: white;
+  padding: 12px 20px;
+}
+
+.nav-links a {
+  margin-left: 15px;
+  color: #fff3e0; /* light cream */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-links a:hover {
+  color: #ffd180; /* warm yellow */
+}
