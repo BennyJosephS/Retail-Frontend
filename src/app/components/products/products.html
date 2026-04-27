@@ -1,43 +1,45 @@
 <div class="navbar">
-  <h2>🍕 Flavour Hub</h2>
+
+  <div class="logo">
+    🍕 Flavour Hub
+  </div>
+
+  <div class="search-box">
+    <input
+      type="text"
+      placeholder="Search pizza, bread, drinks..."
+      [(ngModel)]="searchText"
+      (input)="searchProducts()">
+  </div>
 
   <div class="nav-links">
-    <a routerLink="/">Menu</a>
-    <a routerLink="/cart" class="cart-link">
-      Cart 🛒
-    </a>
+    <a routerLink="/">Home</a>
+    <a routerLink="/cart" class="cart-btn">🛒 Cart</a>
   </div>
+
 </div>
 
 <div class="container">
 
-  <h1>Our Delicious Menu</h1>
-
-  <div *ngIf="loading" class="loading">
-    Loading products...
-  </div>
+  <h1 class="title">Our Delicious Menu</h1>
 
   <div class="grid">
 
-    <div class="card" *ngFor="let item of products">
+    <div class="card" *ngFor="let item of filteredProducts">
 
-      <img [src]="item.imageUrl" alt="product">
+      <img [src]="item.imageUrl">
 
       <div class="content">
         <h3>{{item.name}}</h3>
-
-        <p class="category">{{item.categoryName}}</p>
-
-        <p class="desc">{{item.description}}</p>
-
+        <p>{{item.categoryName}}</p>
         <h4>₹{{item.price}}</h4>
 
-        <button
-          (click)="addToCart(item.productId)"
-          [disabled]="!item.isAvailable || item.stockQuantity <= 0">
+        <a [routerLink]="['/product', item.productId]">
+          <button class="view-btn">View Details</button>
+        </a>
 
-          {{ item.stockQuantity <= 0 ? 'Out of Stock' : 'Add to Cart' }}
-
+        <button (click)="addToCart(item.productId)">
+          Add to Cart
         </button>
 
       </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 
 import { Product } from '../../models/product';
@@ -9,13 +10,15 @@ import { CartService } from '../../services/cart';
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './products.html',
   styleUrl: './products.css'
 })
 export class Products implements OnInit {
 
   products: Product[] = [];
+  filteredProducts: Product[] = [];
+  searchText = '';
   loading = true;
 
   constructor(
@@ -31,23 +34,24 @@ export class Products implements OnInit {
     this.productService.getProducts().subscribe({
       next: (res) => {
         this.products = res;
+        this.filteredProducts = res;
         this.loading = false;
       },
       error: () => {
-        alert('Failed to load products');
         this.loading = false;
       }
     });
   }
 
+  searchProducts() {
+    this.filteredProducts = this.products.filter(x =>
+      x.name.toLowerCase().includes(this.searchText.toLowerCase())
+    );
+  }
+
   addToCart(productId: number) {
-    this.cartService.addToCart(productId, 1).subscribe({
-      next: () => {
-        alert('Added to cart 🛒');
-      },
-      error: () => {
-        alert('Please login first');
-      }
+    this.cartService.addToCart(productId, 1).subscribe(() => {
+      alert('Added to cart');
     });
   }
 }

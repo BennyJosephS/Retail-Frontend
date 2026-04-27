@@ -1,0 +1,22 @@
+<div class="container" *ngIf="product">
+
+  <a routerLink="/">⬅ Back</a>
+
+  <div class="detail-card">
+
+    <img [src]="product.imageUrl">
+
+    <div class="info">
+      <h1>{{product.name}}</h1>
+      <p>{{product.description}}</p>
+      <h2>₹{{product.price}}</h2>
+      <p>Stock: {{product.stockQuantity}}</p>
+
+      <button (click)="addToCart()">
+        Add to Cart
+      </button>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,26 @@
+.container{
+  padding:30px;
+}
+
+.detail-card{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+  background:white;
+  padding:30px;
+  border-radius:18px;
+}
+
+img{
+  width:100%;
+  border-radius:15px;
+}
+
+button{
+  margin-top:20px;
+  padding:14px 25px;
+  background:#ff5722;
+  color:white;
+  border:none;
+  border-radius:10px;
+}
