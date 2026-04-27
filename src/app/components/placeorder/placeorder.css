@@ -1,0 +1,19 @@
+.order-form {
+  padding: 20px;
+  max-width: 400px;
+  margin: auto;
+}
+
+textarea, input {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background: green;
+  color: white;
+  border: none;
+}

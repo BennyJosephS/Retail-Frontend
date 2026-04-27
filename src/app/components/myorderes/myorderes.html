@@ -1,0 +1,19 @@
+<div class="orders">
+
+  <h2>📦 My Orders</h2>
+
+  <div *ngFor="let o of orders" class="card">
+
+    <h3>{{ o.orderNumber }}</h3>
+
+    <p>Status: {{ o.status }}</p>
+
+    <p>Total: ₹ {{ o.totalAmount }}</p>
+
+    <button (click)="viewDetails(o.orderId)">
+      View Details
+    </button>
+
+  </div>
+
+</div>
